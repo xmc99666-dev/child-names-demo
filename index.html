@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>儿童识字小报生成器</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>儿童识字小报生成器</h1>
+      <p class="subtitle">基于 AI 的儿童识字学习小报制作工具</p>
+    </header>
+
+    <main>
+      <!-- API Key 配置区 -->
+      <section id="apiKeySection" class="api-key-section">
+        <div class="api-key-content">
+          <div class="api-key-header">
+            <h2>API Key 配置</h2>
+            <p class="api-key-status" id="apiKeyStatus">未配置</p>
+          </div>
+          <div id="apiKeyInputWrapper" class="api-key-input-wrapper">
+            <input type="password" id="apiKeyInput" placeholder="请输入 API Key" autocomplete="off">
+            <button id="saveApiKeyBtn" class="btn-save-key">保存密钥</button>
+          </div>
+          <p class="api-key-hint">
+            访问 <a href="https://kie.ai/api-key" target="_blank">https://kie.ai/api-key</a> 获取 API Key
+          </p>
+        </div>
+      </section>
+
+      <!-- 场景选择区 -->
+      <section class="scene-section">
+        <h2>选择场景</h2>
+        <div class="template-grid" id="templateGrid">
+          <!-- 模板卡片将通过 JS 动态生成 -->
+        </div>
+      </section>
+
+      <!-- 自定义输入区 -->
+      <section class="custom-section">
+        <h2>自定义内容 <span class="optional">(可选)</span></h2>
+        <div class="form-group">
+          <label for="themeInput">主题/场景名称</label>
+          <input type="text" id="themeInput" placeholder="例如：超市、医院、公园">
+        </div>
+        <div class="form-group">
+          <label for="titleInput">小报标题</label>
+          <input type="text" id="titleInput" placeholder="例如：走进超市、快乐医院">
+        </div>
+        <div class="form-group">
+          <label for="coreVocab">核心角色与设施</label>
+          <textarea id="coreVocab" rows="2" placeholder="例如：收银员, 货架, 收银台 (逗号分隔)"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="itemsVocab">常见物品/工具</label>
+          <textarea id="itemsVocab" rows="3" placeholder="例如：苹果, 香蕉, 牛奶, 面包 (逗号分隔)"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="envVocab">环境与装饰</label>
+          <textarea id="envVocab" rows="2" placeholder="例如：出口, 入口, 灯, 墙 (逗号分隔)"></textarea>
+        </div>
+      </section>
+
+      <!-- 生成按钮区 -->
+      <section class="action-section">
+        <button id="generateBtn" class="btn-primary" disabled>生成小报</button>
+      </section>
+
+      <!-- 进度显示区 -->
+      <section id="progressSection" class="progress-section hidden">
+        <div class="progress-content">
+          <div class="spinner"></div>
+          <p id="progressText">正在准备...</p>
+          <p id="progressDetail" class="progress-detail"></p>
+        </div>
+      </section>
+
+      <!-- 结果展示区 -->
+      <section id="resultSection" class="result-section hidden">
+        <h2>生成结果</h2>
+        <div id="imageContainer" class="image-container">
+          <!-- 生成的图片将在这里显示 -->
+        </div>
+        <div class="result-actions">
+          <button id="downloadBtn" class="btn-secondary">下载图片</button>
+          <button id="newBtn" class="btn-secondary">生成新的</button>
+        </div>
+      </section>
+
+      <!-- 错误提示区 -->
+      <section id="errorSection" class="error-section hidden">
+        <div class="error-content">
+          <strong>生成失败</strong>
+          <p id="errorText"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>使用 Nano Banana Pro API 生成 | 适合 5-9 岁儿童识字学习</p>
+    </footer>
+  </div>
+
+  <!-- 脚本加载 -->
+  <script src="config.js"></script>
+  <script src="js/templates.js"></script>
+  <script src="js/prompt.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
